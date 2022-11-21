@@ -1,4 +1,5 @@
 const { Course, Student, Grade } = require('../models')
+const { Op } = require('sequelize')
 
 const getCourse = async (req, res) => {
   try {
@@ -31,8 +32,10 @@ const createCourse = async (req, res) => {
 const getStudentCourse = async (req, res) => {
   try {
     const { studentId } = req.body
-    const showStudent = await Course.findByPk(req.params.id, {
-      where: { studentId: studentId },
+    const showStudent = await Course.findOne({
+      where: {
+        [Op.and]: [{ name: req.params.id }, { studentId: studentId }]
+      },
       include: [
         {
           model: Grade,
