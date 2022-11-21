@@ -31,8 +31,18 @@ const createCourse = async (req, res) => {
 const getStudentCourse = async (req, res) => {
   try {
     const { studentId } = req.body.studentId
-    const showStudent = await Course.findbyPK(req.params.id, {
-      where: { studentId: studentId }
+    const showStudent = await Course.findByPk(req.params.id, {
+      where: { studentId: studentId },
+      include: [
+        {
+          model: Grade,
+          as: 'result'
+        },
+        {
+          model: Student,
+          as: 'students'
+        }
+      ]
     })
     res.send(showStudent)
   } catch (error) {
