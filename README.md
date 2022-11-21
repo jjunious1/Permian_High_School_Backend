@@ -1,7 +1,5 @@
 # Permian_High_School_Backend
 
-# You_Buy_Backend
-
 Created By: Bret Borden, Jeff Caroll, Justin Junious
 
 ### **_Description_**
