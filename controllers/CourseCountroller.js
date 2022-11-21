@@ -28,7 +28,20 @@ const createCourse = async (req, res) => {
   }
 }
 
+const getStudentCourse = async (req, res) => {
+  try {
+    const { studentId } = req.body.studentId
+    const showStudent = await Course.findbyPK(req.params.id, {
+      where: { studentId: studentId }
+    })
+    res.send(showStudent)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   getCourse,
-  createCourse
+  createCourse,
+  getStudentCourse
 }
