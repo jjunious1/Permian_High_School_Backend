@@ -16,7 +16,7 @@ app.use(express.json())
 
 //routes
 app.use('/students', StudentsRouter)
-app.use('/course', CourseRouter)
-app.use('/grade', GradeRouter)
+app.use('/courses', CourseRouter)
+app.use('/grades', GradeRouter)
 
 app.listen(PORT, () => console.log(`Server Running On Port: ${PORT}`))

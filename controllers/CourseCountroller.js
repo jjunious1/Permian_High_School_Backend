@@ -1,9 +1,20 @@
-const { Course } = require('../models')
+const { Course, Student, Grade } = require('../models')
 
 const getCourse = async (req, res) => {
   try {
-    const Course = await Course.findAll({})
-    res.send(Course)
+    const course = await Course.findAll({
+      include: [
+        {
+          model: Grade,
+          as: 'result'
+        },
+        {
+          model: Student,
+          as: 'students'
+        }
+      ]
+    })
+    res.send(course)
   } catch (error) {
     throw error
   }
@@ -11,7 +22,7 @@ const getCourse = async (req, res) => {
 const createCourse = async (req, res) => {
   try {
     const newCourse = await Course.create(req.body)
-    res.send(Course)
+    res.send(newCourse)
   } catch (error) {
     throw error
   }

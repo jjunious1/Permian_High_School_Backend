@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Course.belongsTo(models.Student, {
-        as: 'student',
+        as: 'students',
         foreignKey: 'studentId'
       })
       Course.belongsTo(models.Grade, {
