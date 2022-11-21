@@ -30,7 +30,7 @@ const createCourse = async (req, res) => {
 
 const getStudentCourse = async (req, res) => {
   try {
-    const { studentId } = req.body.studentId
+    const { studentId } = req.body
     const showStudent = await Course.findByPk(req.params.id, {
       where: { studentId: studentId },
       include: [
