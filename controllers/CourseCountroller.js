@@ -33,7 +33,7 @@ const getStudentCourse = async (req, res) => {
   try {
     const showStudent = await Course.findOne({
       where: {
-        [Op.and]: [{ name: req.params.id }, { studentId: req.body.studentId }]
+        [Op.and]: [{ name: req.params.name }, { studentId: req.body.studentId }]
       },
       include: [
         {
