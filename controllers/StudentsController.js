@@ -17,7 +17,20 @@ const createStudent = async (req, res) => {
   }
 }
 
+const deleteStudent = async (req, res) => {
+  try {
+    const { id } = req.body
+    await Student.destroy({ where: { id: id } })
+    res.send({
+      message: `deleted successful`
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   getStudents,
-  createStudent
+  createStudent,
+  deleteStudent
 }
